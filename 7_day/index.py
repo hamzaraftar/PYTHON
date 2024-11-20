@@ -6,4 +6,6 @@ guess = input("Guess a latter: ").lower()
 
 for latter in choise_word:
     if latter == guess:
-        print(latter)    
+        print("Right") 
+    else:
+        print("Wrong")
