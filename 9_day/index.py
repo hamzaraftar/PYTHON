@@ -3,4 +3,11 @@ stuent = {
     "name":"Hamza",
     "class":"bscs",
 }
-print(stuent)
+# print(stuent)
+
+# nested dictionary
+className = {
+    "name":["hamza","huzaifa"],
+    "class":["bachler in computer science"],
+}
+print(className["name"][1])
