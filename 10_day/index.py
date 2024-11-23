@@ -4,4 +4,6 @@ def my_funtion(fname , lname):
     result = f'{my_name} {last_name}'
     return result
 
-print(my_funtion("hamza" , "asghar"))
+# print(my_funtion("hamza" , "asghar"))
+
+# Docstring
