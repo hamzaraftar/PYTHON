@@ -18,4 +18,11 @@ if account_a == account_b:
 
 print(f'Compare A: {formatData(account_a)}')
 print(vs)
-print(f'Compare B: {formatData(account_b)}')
+print(f'Against B: {formatData(account_b)}')
+
+
+guess = input("Who has more followers Type 'A' or 'B': ").lower()
+
+
+a_follow_account = account_a["follower_count"]
+b_follow_account = account_b["follower_count"]
