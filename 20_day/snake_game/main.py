@@ -1,6 +1,7 @@
 from turtle import Screen
 from snake import Snake
 from food import Food
+from scoreboard import Scoreboard
 import time
 
 screen = Screen()
@@ -9,8 +10,10 @@ screen.bgcolor("black")
 screen.title("Hamza Snake Game")
 screen.tracer(0)
 
+# Classes
 snake = Snake()
 food = Food()
+scorebord = Scoreboard()
 
 
 screen.listen()
@@ -27,6 +30,7 @@ while game_is_on:
 
     if snake.head.distance(food) < 15:
         food.refresh()
+        scorebord.increase_score()
 
 
 
