@@ -36,4 +36,10 @@ while game_is_on:
     
         ball.bounce_x()    
 
+    if ball.xcor() > 380:
+        ball.reset_position()
+
+    if ball.xcor() < -380:
+        ball.reset_position()
+
 screen.exitonclick()
