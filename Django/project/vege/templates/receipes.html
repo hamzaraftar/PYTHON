@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <title>Receipe</title>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <form
+        class="col-6 mx-auto shadow-lg p-4"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        {% csrf_token %}
+        <h3>Add Receipe</h3>
+        <hr />
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label"
+            >Receipe Name</label
+          >
+          <input
+            required
+            name="name"
+            type="text"
+            class="form-control"
+            aria-describedby="emailHelp"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label"
+            >Receipe Description</label
+          >
+          <textarea required class="form-control" name="description"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label"
+            >Receipe Image</label
+          >
+          <input
+            required
+            name="image"
+            type="file"
+            class="form-control"
+            aria-describedby="emailHelp"
+          />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Receipe</button>
+      </form>     
+
+      <table class="table mt-5">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Image</th>
+            <th scope="col">Action</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          {% for receipe in receipes %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+             
+            <td>{{receipe.name}}</td>
+            <td>{{receipe.description}}</td>
+            <td>{{receipe.image}}</td>
+            <td>
+              <a href="/repo/{{receipe.id}}/" type="button" class="btn btn-danger">Delete</a>
+              <a href="/update/{{receipe.id}}/" type="button" class="btn btn-info mx-2">Update</a>
+            </td>
+          </tr>
+          {% endfor %}          
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
