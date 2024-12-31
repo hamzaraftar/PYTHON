@@ -22,28 +22,43 @@
         <h3>Sign Up for free</h3>
         <hr />
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label"
-            >User Name</label
-          >
+          <label for="exampleInputEmail1" class="form-label">First Name</label>
           <input
             required
-            name="name"
+            name="first_name"
+            type="text"
+            class="form-control"
+            aria-describedby="emailHelp"
+          />
+          <label for="exampleInputEmail1" class="form-label">Last Name</label>
+          <input
+            required
+            name="last_name"
+            type="text"
+            class="form-control"
+            aria-describedby="emailHelp"
+          />
+          <label for="exampleInputEmail1" class="form-label">User Name</label>
+          <input
+            required
+            name="user_name"
             type="text"
             class="form-control"
             aria-describedby="emailHelp"
           />
         </div>
         <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label"
-            >Password</label
-          >
-          <input type="password" class="form-control" id="exampleInputPassword1">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input
+            type="password"
+            name="password"
+            class="form-control"
+            id="exampleInputPassword1"
+          />
         </div>
         <p>Already have account <a href="/login/">Log In</a></p>
         <button type="submit" class="btn btn-primary">Sign Up</button>
-      </form>     
-
-      
+      </form>
     </div>
   </body>
 </html>

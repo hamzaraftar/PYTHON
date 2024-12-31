@@ -1,5 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import Recepie
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate,login
 
 # Create your views here.
 def home(request):
@@ -48,8 +50,40 @@ def update(request, id):
     }
     return render(request, 'update.html' ,context)
  
+
 def login(request):
+
+    if request.method == "POST":
+        username = request.POST.get('user_name')
+        password = request.POST.get('password')
+
+        if not User.objects.filter(username=username).exists():
+            return redirect('login/')
+        
+        user = authenticate(username = username, password = password)        
+        if user is None:
+            return redirect('/login/')
+        else:
+            login(request , user)
+            return redirect('/')
+                
     return render(request, 'login.html') 
 
+
 def register(request):
+
+    if request.method == "POST":
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        username = request.POST.get('user_name')
+        password = request.POST.get('password')
+
+        if User.objects.filter(username=username).exists():
+            return redirect('/signup/')
+        
+        user = User.objects.create_user( first_name=first_name, last_name=last_name ,username=username)
+        user.set_password(password)
+        user.save()
+        return redirect('/signup/')
+    
     return render(request, 'register.html')
