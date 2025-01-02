@@ -13,12 +13,19 @@ my_lable.config(text="New Text")
 
 
 def button_click():
-    print("i got click")
-    my_lable.config(text="Button got  Click")
+    new_text = input.get()
+
+    # print("i got click")
+    my_lable.config(text=new_text)
 
 
 button = Button(text="Click me" ,command=button_click)
 button.pack()
+
+input = Entry()
+input.pack()
+print(input.get())
+
 
 
 
