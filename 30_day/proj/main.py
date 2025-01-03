@@ -10,6 +10,7 @@ def generate():
         output_list = [phonetic_dict[letter] for letter in word]
     except KeyError:
         print("Sorry only latter in alphabet")
+        generate()
     else:
         print(output_list)
         
