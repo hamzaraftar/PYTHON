@@ -5,21 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 10;
-            padding: 10;
-            background-color: rgb(31, 29, 29);
-            color: aliceblue;
-        }
-
+        
     </style>
 </head>
 <body>
-    <h1>Input your text bellow</h1>
-    <form action="counter/">
-        <textarea name="text" id="" rows="25"  cols="100"> </textarea><br>
-        <input type="submit" >
-    </form>
+    {% for feature in features%}
+    <h1>{{feature.name}}</h1>
+    <h3>{{feature.details}}</h3>
+    {% endfor %}
 </body>
 </html>
