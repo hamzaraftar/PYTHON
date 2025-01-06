@@ -26,13 +26,25 @@ class QuizInterface:
         self.window.mainloop()
 
     def get_next_question(self):
+        self.canves.config(bd='white')
+        self.score_label.config(text=f'text Score: {self.quiz.score}')
         q_text = self.quiz.next_question()
         self.canves.itemconfig(self.question_text, text=q_text) 
 
-    def turn_true(self):
-        self.quiz.check_answer("True")
-        self.get_next_question()
+    def turn_true(self):        
+        self.give_feedback(self.quiz.check_answer("True"))
+        
 
     def turn_false(self):
-        self.quiz.check_answer("False")
-        self.get_next_question()    
+        is_right = self.quiz.check_answer("False")
+        self.give_feedback(is_right)
+            
+
+    def give_feedback(self,right):
+        if right:
+            self.canves.config(bg='green')
+        else:
+            self.canves.config(bg='red')
+
+        self.window.after(1000 , self.get_next_question())
+
