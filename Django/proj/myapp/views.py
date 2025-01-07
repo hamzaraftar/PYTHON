@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import Feature
-from django.contrib.auth.models import User, auth
+from django.contrib.auth.models import User, authenticate
 from django.contrib import messages
 
 def index(request):
@@ -36,5 +36,22 @@ def register(request):
     else:
         return render(request, 'register.html')
 
+# Log In
+
 def login(request):
-    pass
+    if request.method == 'POST':
+        username = request.POST["username"]
+        password = request.POST["password"]
+        email = request.POST["email"]
+        
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            # A backend authenticated the credentials
+            ...
+        else:
+            # No backend authenticated the credentials
+            ...
+
+
+
+    return render(request , 'login.html')
