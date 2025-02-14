@@ -3,4 +3,5 @@ from expense import views
 
 urlpatterns = [
     path("get-transactions/", views.get_transactions),
+    path("transactions/", views.TransactionView.as_view()),
 ]
