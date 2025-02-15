@@ -8,7 +8,7 @@ from rest_framework.views import APIView
 
 
 class StudentAPI(APIView):
-    def get(self, request, id):
+    def get(self, request, id=None):
         if id is not None:
             stu = Student.objects.get(id=id)
             serializer = StudentSerializer(stu)
