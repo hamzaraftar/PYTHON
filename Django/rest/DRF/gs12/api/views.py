@@ -33,7 +33,7 @@ class StudentAPI(APIView):
             return Response(serializer.data)
         return Response(serializer.errors)
     
-    def pathch(self, request, id):
+    def patch(self, request, id):
         stu = Student.objects.get(id=id)
         serializer = StudentSerializer(stu, data=request.data, partial=True)
         if serializer.is_valid():
