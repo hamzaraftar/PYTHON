@@ -1,5 +1,5 @@
 """
-ASGI config for gs1 project.
+ASGI config for Con_View_Class project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'gs1.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Con_View_Class.settings')
 
 application = get_asgi_application()
