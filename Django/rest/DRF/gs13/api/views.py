@@ -38,4 +38,8 @@ class StudentUpdate(GenericAPIView, UpdateModelMixin):
     def patch(self, request, *args, **kwargs):
         return self.partial_update(request, *args, **kwargs)
     
-
+class StudentDetele(GenericAPIView, DestroyModelMixin):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
+    def put(self, request, *args, **kwargs):
+        return self.destroy(request, *args, **kwargs)
