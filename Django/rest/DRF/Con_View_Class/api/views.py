@@ -15,3 +15,7 @@ class StudentRetrive(RetrieveAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
 
+class StudentUpdate(UpdateAPIView):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
+
