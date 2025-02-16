@@ -19,3 +19,8 @@ class StudentUpdate(UpdateAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
 
+
+class StudentDelete(DestroyAPIView):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
+
