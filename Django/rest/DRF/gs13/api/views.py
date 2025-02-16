@@ -30,3 +30,12 @@ class StudentUpdate(GenericAPIView, UpdateModelMixin):
     serializer_class = StudentSerializer
     def put(self, request, *args, **kwargs):
         return self.update(request, *args, **kwargs)
+    
+
+class StudentUpdate(GenericAPIView, UpdateModelMixin):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
+    def patch(self, request, *args, **kwargs):
+        return self.partial_update(request, *args, **kwargs)
+    
+
