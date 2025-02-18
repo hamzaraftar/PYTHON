@@ -3,9 +3,10 @@ from rest_framework import generics
 from rest_framework.response import Response
 from .serializers import RegisterSerializer ,LoginSerializer,UserSerializer
 from django.contrib.auth.models import User
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny,IsAuthenticated
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework.views import APIView
 
 # Create your views here.
 class RegisterView (generics.CreateAPIView):
@@ -29,4 +30,14 @@ class LoginView (generics.GenericAPIView):
             })
         return Response({
             'message': 'Invalid credentials'
+        })
+
+class Dashbord(APIView):
+    permission_classes = [IsAuthenticated]
+    def get(self,request):
+        user = request.user
+        user_serialized = UserSerializer(user)
+        return Response({
+            'message':"Welcome to Dashbord",
+            'user':user_serialized.data
         })
