@@ -8,6 +8,7 @@ from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.views import APIView
 
+
 # Create your views here.
 class RegisterView (generics.CreateAPIView):
     queryset = User.objects.all()
@@ -41,3 +42,4 @@ class Dashbord(APIView):
             'message':"Welcome to Dashbord",
             'user':user_serialized.data
         })
+    
