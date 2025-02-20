@@ -54,4 +54,12 @@ def update_student(request,id):
     except Exception as e:
         return Response({"error": str(e)})   
 
-        
+@api_view(["DELETE"])
+def delete_student(request,id):
+    try:
+        if request.method =="DELETE":
+            stu = Student.objects.get(id=id)
+            stu.delete()
+        return Response("Delete Successfully")
+    except:
+        return Response({"error":"Data can't Delete "})    
