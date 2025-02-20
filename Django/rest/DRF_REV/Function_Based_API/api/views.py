@@ -39,5 +39,19 @@ def create_student(request):
         return Response({"error": str(e)})   
 
         
+@api_view(["PUT"])
+def update_student(request,id):
+    try:
+        if request.method == "PUT":  
+            stu = Student.objects.get(id=id)          
+            serializer = StudentSerializer(stu , data=request.data ,partial=True)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data)
+
+            return Response(serializer.errors)
+    
+    except Exception as e:
+        return Response({"error": str(e)})   
 
         
