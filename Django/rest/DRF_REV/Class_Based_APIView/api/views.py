@@ -21,58 +21,26 @@ class StudentAPI(APIView):
             return Response(serializer.error)
 
     def post(self,request):
-        try:
-            if request.method == "POST":            
-                serializer = StudentSerializer(data=request.data)
-                if serializer.is_valid():
-                    serializer.save()
-                    return Response(serializer.data)
-
-                return Response(serializer.errors)
-    
-        except Exception as e:
-            return Response({"error": str(e)})  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-@api_view(["POST"])
-def create_student(request):
-     
-
-        
-@api_view(["PUT"])
-def update_student(request,id):
-    try:
-        if request.method == "PUT":  
-            stu = Student.objects.get(id=id)          
-            serializer = StudentSerializer(stu , data=request.data ,partial=True)
+        try:                       
+            serializer = StudentSerializer(data=request.data)
             if serializer.is_valid():
                 serializer.save()
                 return Response(serializer.data)
 
             return Response(serializer.errors)
     
-    except Exception as e:
-        return Response({"error": str(e)})   
+        except Exception as e:
+            return Response({"error": str(e)})  
 
-@api_view(["DELETE"])
-def delete_student(request,id):
-    try:
-        if request.method =="DELETE":
-            stu = Student.objects.get(id=id)
-            stu.delete()
-        return Response("Delete Successfully")
-    except:
-        return Response({"error":"Data can't Delete "})    
+    def put(self,request,id):
+       try:            
+            stu = Student.objects.get(id=id)          
+            serializer = StudentSerializer(stu , data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data)
+
+            return Response(serializer.errors)
+       
+       except Exception as e:
+            return Response({"error": str(e)})
