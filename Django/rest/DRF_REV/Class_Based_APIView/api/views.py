@@ -6,7 +6,7 @@ from .models import Student
 
 
 class StudentAPI(APIView):
-    def get(self,request,id):
+    def get(self,request,id=None):
         try:
             if id is not None:
                 stu = Student.objects.get(id=id)
@@ -17,8 +17,8 @@ class StudentAPI(APIView):
             serializer = StudentSerializer(stu, many=True)
             return Response(serializer.data)
             
-        except:
-            return Response(serializer.error)
+        except Exception as e:
+            return Response({"error": str(e)})
 
     def post(self,request):
         try:                       
@@ -64,5 +64,5 @@ class StudentAPI(APIView):
             stu.delete()
             return Response("Delete Successfully")
         
-        except:
-            return Response({"error":"Data can't Delete "})    
+        except Exception as e:
+            return Response({"error": str(e)})   
