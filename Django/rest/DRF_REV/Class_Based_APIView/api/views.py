@@ -58,4 +58,11 @@ class StudentAPI(APIView):
         except Exception as e:
             return Response({"error": str(e)})
        
- 
+    def delete(self,request,id):
+        try:            
+            stu = Student.objects.get(id=id)
+            stu.delete()
+            return Response("Delete Successfully")
+        
+        except:
+            return Response({"error":"Data can't Delete "})    
