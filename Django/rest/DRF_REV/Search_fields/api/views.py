@@ -8,5 +8,6 @@ class StudentApi(ListAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
     filter_backends = [SearchFilter]
-    search_fields  = ['city']
+    # search_fields  = ['city']
+    search_fields  = ['^city']
 
