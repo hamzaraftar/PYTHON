@@ -1,3 +1,9 @@
 from django.shortcuts import render
 
-# Create your views here.
+# Exaple 1 Variable
+# def home(req):
+#     return render(req , 'app/home.html',context={'name':'hamza asghar'})
+
+# Exaple 2 Filter
+def home(req):
+    return render(req , 'app/home.html',context={'name':'hamza asghar'})
