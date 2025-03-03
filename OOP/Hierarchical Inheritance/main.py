@@ -25,8 +25,9 @@ class Student(Person):
     def __init__(self, name, age , marks):
         super().__init__(name, age)
         self.marks = marks
+
         def display(self):
             print('This Student ')
 
 s1 = Student('hamza', 12 , 333)
-e1 = 
+print(s1.age)
