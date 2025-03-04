@@ -5,8 +5,10 @@ def show_form_data (request):
     if request.method == "POST":    
         fm = StudentForm(request.POST)
         if fm.is_valid():
-            print(fm.cleaned_data['name'])
-            print(fm.cleaned_data['email'])
+            name = fm.cleaned_data['name']
+            email = fm.cleaned_data['email']
+            return render(request , 'student/success.html',{'nm':name})
+
     else:
         fm = StudentForm()  
 
