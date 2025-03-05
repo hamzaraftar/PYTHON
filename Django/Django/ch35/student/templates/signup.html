@@ -8,14 +8,10 @@
   <body>
     <h1>User registrations</h1>
     <form action="" method="post">
-      {% csrf_token %}
-      
+      {% csrf_token %}      
       {% for fm  in form %}
-        {{fm.label_tag}} {{fm}} {{fm.errors | striptags}} <br>
-      
-      {% endfor %}
-
-      
+        {{fm.label_tag}} {{fm}} {{fm.errors | striptags}} <br>      
+      {% endfor %}      
       <input type="submit" value="Submit" />
     </form>
   </body>
