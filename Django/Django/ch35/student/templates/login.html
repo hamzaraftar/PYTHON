@@ -9,8 +9,12 @@
     <h1>Log In</h1>
     <form action="" method="post">
         {% csrf_token %}
-        {{form}}
+        {% for fm  in form %}
+        
+        {{fm.label_tag}} {{fm}} {{fm.errors | striptags}} <br>
+        {% endfor %}
         <input type="submit" value="Login" />
     </form>
+    <h3><a href="http://127.0.0.1:8000/signup/"> Signup</a></h3>
 </body>
 </html>
