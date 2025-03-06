@@ -32,3 +32,9 @@ def log_in(request):
 
 def profile_page(request):
     return render(request , 'profile.html')
+
+
+
+def log_out(request):
+    logout(request)
+    return HttpResponseRedirect('/login/')
