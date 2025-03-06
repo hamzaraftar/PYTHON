@@ -1,18 +1,34 @@
-from django.shortcuts import render
+from django.shortcuts import render , HttpResponseRedirect
 from  .forms import SignUpForm
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import authenticate , login , logout
 
 
-def sign_up(req):
-    if req.method == "POST":   
-        fm = SignUpForm(req.POST)
+def sign_up(request):
+    if request.method == "POST":   
+        fm = SignUpForm(request.POST)
         if fm.is_valid():
             fm.save()
     else:
         fm = SignUpForm()
-    return render(req , 'signup.html',{"form":fm})
+    return render(request , 'signup.html',{"form":fm})
 
 
-def log_in(req):
-    fm = AuthenticationForm()
-    return render(req , 'login.html' , {'form':fm})
+def log_in(request):
+    if request.method == "POST":   
+        fm = AuthenticationForm(request=request , data= request.POST)
+        if fm.is_valid():
+            uname= fm.cleaned_data['username']
+            upass= fm.cleaned_data['password']
+            user = authenticate(username=uname , password=upass)
+            if user is not None:
+                login(request ,user)
+                return HttpResponseRedirect('/profile/')
+    else:             
+
+        fm = AuthenticationForm()
+    return render(request , 'login.html' , {'form':fm})
+
+
+def profile_page(request):
+    return render(request , 'profile.html')
