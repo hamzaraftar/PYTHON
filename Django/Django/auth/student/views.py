@@ -1,6 +1,6 @@
 from django.shortcuts import render , HttpResponseRedirect
 from  .forms import SignUpForm
-from django.contrib.auth.forms import AuthenticationForm , PasswordChangeForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate , login , logout
 
 
@@ -42,14 +42,3 @@ def profile_page(request):
 def log_out(request):
     logout(request)
     return HttpResponseRedirect('/login/')
-
-
-def user_change_pass(request):
-    if request.method == 'POST':
-        fm = PasswordChangeForm(user=request.user ,data=request.POST)
-        if fm.is_valid():
-            fm.save()
-            return HttpResponseRedirect('/profile/')
-    else:    
-        fm = PasswordChangeForm(user=request.user)
-    return render(request , 'changepass.html' ,{'form':fm})
