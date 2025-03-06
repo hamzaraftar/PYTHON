@@ -15,24 +15,28 @@ def sign_up(request):
 
 
 def log_in(request):
-    if request.method == "POST":   
-        fm = AuthenticationForm(request=request , data= request.POST)
-        if fm.is_valid():
-            uname= fm.cleaned_data['username']
-            upass= fm.cleaned_data['password']
-            user = authenticate(username=uname , password=upass)
-            if user is not None:
-                login(request ,user)
-                return HttpResponseRedirect('/profile/')
-    else:             
-
-        fm = AuthenticationForm()
-    return render(request , 'login.html' , {'form':fm})
+    if not request.user.is_authenticated:
+        if request.method == "POST":   
+            fm = AuthenticationForm(request=request , data= request.POST)
+            if fm.is_valid():
+                uname= fm.cleaned_data['username']
+                upass= fm.cleaned_data['password']
+                user = authenticate(username=uname , password=upass)
+                if user is not None:
+                    login(request ,user)
+                    return HttpResponseRedirect('/profile/')
+        else: 
+            fm = AuthenticationForm()
+        return render(request , 'login.html' , {'form':fm})
+    else:
+        return HttpResponseRedirect('/profile/')
 
 
 def profile_page(request):
-    return render(request , 'profile.html')
-
+    if request.user.is_authenticated:
+        return render(request , 'profile.html',{'name':request.user})
+    else:
+        return HttpResponseRedirect('/login/')
 
 
 def log_out(request):
