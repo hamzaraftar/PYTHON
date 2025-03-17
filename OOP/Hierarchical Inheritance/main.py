@@ -30,4 +30,4 @@ class Student(Person):
             print('This Student ')
 
 s1 = Student('hamza', 12 , 333)
-# print(s1.age)
+print(s1.age)
