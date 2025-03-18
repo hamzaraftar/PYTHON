@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     {% for student in student_list %}
-        <h2>{{student.id}}</h2>
-        <h2>{{student.name}}</h2>
-        <h3>{{student.course}}</h3>
+    <h2>{{student.id}}</h2>
+    <h2>{{student.name}}</h2>
+    <h3>{{student.course}}</h3>
     {% endfor %}
-</body>
+  </body>
 </html>
