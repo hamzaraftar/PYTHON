@@ -10,4 +10,4 @@ def myview(request):
 # class base veiw
 class Myview(View):
     def get(self,request):
-        return HttpResponse('class base view')
+        return HttpResponse('class base view' )
