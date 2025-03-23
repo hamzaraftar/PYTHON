@@ -1,5 +1,5 @@
 """
-URL configuration for pagecounter project.
+URL configuration for ch1 project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.1/topics/http/urls/
@@ -19,5 +19,5 @@ from django.urls import path
 from app import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name='home'),
+    path(""  ,views.home)
 ]
