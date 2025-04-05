@@ -9,7 +9,3 @@ class StudentModel(viewsets.ModelViewSet):
     serializer_class = StudentSerializer
     authentication_classes = [ SessionAuthentication]
     permission_classes = [MyPermission]
-    
-
-
-
