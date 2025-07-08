@@ -13,7 +13,6 @@ def get_data(request):
         return Response({"error": str(e)}, status=500)
 
 
-
 # get student by id 
 @api_view(["GET"])
 def get_data_by_id(request, id):
@@ -36,3 +35,24 @@ def create_student(request):
             return Response(serializer.errors)
     except Exception as e:
         return Response({"error": str(e)})
+    
+@api_view(["PUT"])  # ✅ Must include "PUT"
+def update_student(request, id):
+    try:
+        student = Student.objects.get(id=id)
+        serializer = StudentSerializers(student, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors)
+    except Student.DoesNotExist:
+        return Response({"error": "Student not found"})
+    except Exception as e:
+        return Response({"error": str(e)})
+
+# @api_view(["DELETE"])
+# def updata_student(request,id):
+#     try:
+#         pass
+#     except:
+#         pass
