@@ -1,0 +1,9 @@
+from api import views
+from django.contrib import admin
+from django.urls import path
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('student/', views.get_data),
+    path('student/<int:id>/', views.get_data_by_id),
+]
