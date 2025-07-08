@@ -12,11 +12,9 @@ def get_data(request):
     except Exception as e:
         return Response({"error": str(e)}, status=500)
 
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from .models import Student
-from .serializers import StudentSerializers
 
+
+# get student by id 
 @api_view(["GET"])
 def get_data_by_id(request, id):
     try:
@@ -25,3 +23,16 @@ def get_data_by_id(request, id):
         return Response(serializer.data)
     except Student.DoesNotExist:
         return Response({"error": "Student doesn't exist"})
+
+# create student
+@api_view(["POST"])
+def create_student(request):
+    try:
+        if request.method == "POST":  
+            serializer = StudentSerializers(data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data)
+            return Response(serializer.errors)
+    except Exception as e:
+        return Response({"error": str(e)})
