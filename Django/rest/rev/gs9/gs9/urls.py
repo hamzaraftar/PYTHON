@@ -7,5 +7,6 @@ urlpatterns = [
     path('student/', views.get_data),
     path("student/create/", views.create_student),
     path("student/update/<int:id>/", views.update_student),
+    path("student/delete/<int:id>/", views.delete_student),
     path('student/<int:id>/', views.get_data_by_id),
 ]
